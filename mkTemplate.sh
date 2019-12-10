@@ -12,7 +12,7 @@ npm install --save-dev @babel/core @babel/preset-env @babel/preset-react webpack
 npm install webpack webpack-cli
 npm install babel-loader
 
-cp ../Challange5/webpack.config.js .
+cp ../webpack.config.js .
 
 mkdir app
 cp ../index.js app/
