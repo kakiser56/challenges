@@ -24,5 +24,15 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
+  },
+    "main": "index.js",
+    "babel":{
+	"presets" : [
+	    "@babel/preset-env",
+	    "@babel/preset-react"
+	]
+  },
+  "scripts": {
+      "start": "webpack-dev-server --open"
   }
 }
