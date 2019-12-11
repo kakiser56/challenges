@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
@@ -25,14 +25,10 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   },
-    "main": "index.js",
-    "babel":{
-	"presets" : [
-	    "@babel/preset-env",
-	    "@babel/preset-react"
-	]
-  },
-  "scripts": {
-      "start": "webpack-dev-server --open"
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }
