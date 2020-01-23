@@ -1,5 +1,5 @@
 # challenges
 
 Rin via:
- npm run create
+ npm run start
  
