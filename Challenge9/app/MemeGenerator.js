@@ -1,0 +1,69 @@
+import React,  {Component} from "react"
+
+class MemeGenerator extends Component {
+    constructor() {
+        super()
+        this.state = {
+            topText: "",
+            bottomText: "",
+            randomImage: "http://i.imgFlip.com/1bij.jpg",
+            allMemeImgs: []
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.generateMeme = this.generateMeme.bind(this)
+    }
+
+    componentDidMount() {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(response => response.json())
+            .then(response => {
+                const {memes} = response.data
+                //console.log(memes[0])
+                this.setState({allMemeImgs: memes})
+            })
+    }
+
+    handleChange(event) {
+        const {name, value} = event.target
+        this.setState ({[name]: value})
+    }
+
+    generateMeme(event) {
+        event.preventDefault()
+        const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length)
+        const randMemeImg = this.state.allMemeImgs[randNum].url
+        this.setState({randomImage: randMemeImg})
+    }
+
+    render() {
+        return (
+            <div>
+                <form className='meme-form' onSubmit={this.generateMeme}>
+                    <input 
+                        type='text' 
+                        name='topText'
+                        placeholder='Top Text'
+                        value={this.state.topText}
+                        onChange={this.handleChange}
+                    />
+                    <input 
+                        type='text' 
+                        name='bottomText'
+                        placeholder='Bottom Text'
+                        value={this.state.bottomText}
+                        onChange={this.handleChange}
+                    />
+                    <button>Gen</button>
+                </form>
+                <div className='meme'>
+                    <h2 className='top'>{this.state.topText}</h2>
+                    <img src={this.state.randomImage} alt="" />
+                    <h2 className='bottom'>{this.state.bottomText}</h2>
+                </div>
+            </div>
+        )
+    }
+
+}
+
+export default MemeGenerator
